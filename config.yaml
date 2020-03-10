@@ -37,8 +37,13 @@ auth:
     password: 'alias'
   whitelist:
   users:
+    - Francois
+    - Fabian
+    - Stephan    
+    - Sakr
     - Misbah
     - Hammad
+    - Mostafa
 #
 # WAY 2: Add users using gmail accounts, or Oauth : (this is HARD)
 # 1: U need a website name, see google domains:
