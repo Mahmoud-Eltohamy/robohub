@@ -3,8 +3,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PATH="/root/miniconda3/bin:${PATH}"
 ARG PATH="/root/miniconda3/bin:${PATH}"
 
-RUN add-apt-repository ppa:qameta/allure
-
+RUN apt-get install software-properties-common python-software-properties && add-apt-repository ppa:qameta/allure
 RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs allure\
     openjdk-8-jdk libgconf2-4 libnss3 libxss1 libappindicator1 libindicator7 xdg-utils  
 
