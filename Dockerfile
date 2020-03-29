@@ -15,7 +15,7 @@ RUN wget \
 RUN conda create --name myenv --yes 
 # Make RUN commands use the new environment:
 SHELL ["conda", "run", "-n", "myenv", "/bin/bash", "-c"]
-RUN  conda install -c conda-forge firefox geckodriver && conda install -c anaconda chromedriver-binary 
+RUN  conda install -c conda-forge firefox geckodriver && conda install -c anaconda chromedriver-binary &&  conda install -c mutirri selenium-chromedriver  
 # install robotframework deps in activated conda
 RUN pip3 install allure-robotframework robotframework robotframework-extendedrequestslibrary robotframework-faker \
     robotframework-jsonlibrary robotframework-jsonvalidator robotframework-pabot robotframework-randomlibrary \
