@@ -6,7 +6,7 @@ ARG PATH="/root/miniconda3/bin:${PATH}"
 RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs \
     openjdk-8-jdk libgconf2-4 libnss3 libxss1 libappindicator1 libindicator7 xdg-utils  
 
-RUN curl -o allure-2.6.0.tgz -Ls wget https://github.com/allure-framework/allure2/releases/download/2.7.0/allure-2.7.0.zip \
+RUN wget https://github.com/allure-framework/allure2/releases/download/2.7.0/allure-2.7.0.zip \
     && tar -zxvf allure-2.7.0.zip -C /opt/ && \
     ln -s /opt/allure-2.7.0.zip/bin/allure /usr/bin/allure 
 
