@@ -5,7 +5,7 @@ ARG PATH="/root/miniconda3/bin:${PATH}"
 
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
-    rm -rf /var/lib/apt/lists/*  && apt-add-repository ppa:qameta/allure && apt-get update && apt-get install allure
+    rm -rf /var/lib/apt/lists/*  && apt-add-repository ppa:qameta/allure && apt-get update && apt-get install -y allure
     
 RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs \
     openjdk-8-jdk libgconf2-4 libnss3 libxss1 libappindicator1 libindicator7 xdg-utils  
