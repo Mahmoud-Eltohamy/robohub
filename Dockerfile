@@ -3,8 +3,12 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PATH="/root/miniconda3/bin:${PATH}"
 ARG PATH="/root/miniconda3/bin:${PATH}"
 
-RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs allure\
+RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs \
     openjdk-8-jdk libgconf2-4 libnss3 libxss1 libappindicator1 libindicator7 xdg-utils  
+
+RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.6.0/allure-2.6.0.tgz \
+    && tar -zxvf allure-2.6.0.tgz -C /opt/ && \
+    ln -s /opt/allure-2.6.0/bin/allure /usr/bin/allure 
 
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
@@ -49,4 +53,4 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools" && \
     $ANDROID_HOME/tools/bin/sdkmanager "extras;android;m2repository" "extras;google;m2repository"
 
 # checking versions
-RUN java -version && adb --version && conda --version
+RUN java -version && adb --version && conda --version && allure --version
