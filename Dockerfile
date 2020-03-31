@@ -3,26 +3,18 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PATH="/root/miniconda3/bin:${PATH}"
 ARG PATH="/root/miniconda3/bin:${PATH}"
 
-#RUN apt-get update && \
-#    apt-get install -y software-properties-common && \
-#    rm -rf /var/lib/apt/lists/*  && apt-add-repository ppa:qameta/allure && apt-get update && apt-get install -y allure
-    
-RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs \
-    openjdk-8-jdk libgconf2-4 libnss3 libxss1 libappindicator1 libindicator7 xdg-utils  
-
-RUN \
-    sudo apt-get install -y software-properties-common \
-    && sudo apt-add-repository -y ppa:yandex-qatools/allure-framework \
+RUN apt-get install -y software-properties-common \
+    && add-apt-repository ppa:openjdk-r/ppa \
+    && apt-add-repository ppa:qameta/allure \
     && apt-get update \
-    && sudo apt-get -y install allure-commandline \
-    && mkdir -p /allure
+    && apt-get install -y openjdk-8-jre allure \
+    && rm -rf /var/lib/apt/lists/*
 
-#VOLUME ["/allure"]
+CMD allure help
 
-#WORKDIR /allure
-
-#CMD allure generate /allure
-
+RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs \
+    openjdk-8-jdk libgconf2-4 libnss3 libxss1 libappindicator1 libindicator7 xdg-utils 
+    
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && mkdir /root/.conda \
