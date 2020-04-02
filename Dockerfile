@@ -9,9 +9,7 @@ RUN apt-get install -y software-properties-common \
     && apt-get update \
     && apt-get install -y openjdk-8-jre allure \
     && rm -rf /var/lib/apt/lists/*
-
-CMD allure help
-
+    
 RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs \
     openjdk-8-jdk libgconf2-4 libnss3 libxss1 libappindicator1 libindicator7 xdg-utils 
     
