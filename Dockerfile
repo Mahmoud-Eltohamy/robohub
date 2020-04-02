@@ -3,14 +3,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PATH="/root/miniconda3/bin:${PATH}"
 ARG PATH="/root/miniconda3/bin:${PATH}"
 
-RUN apt-get install -y software-properties-common \
-    && add-apt-repository ppa:openjdk-r/ppa \
-    && apt-add-repository ppa:qameta/allure \
-    && apt-get update \
-    && apt-get install -y openjdk-8-jre allure \
-    && rm -rf /var/lib/apt/lists/*
-    
-RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs \
+RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs allure \
     openjdk-8-jdk libgconf2-4 libnss3 libxss1 libappindicator1 libindicator7 xdg-utils 
     
 RUN wget \
@@ -56,4 +49,4 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools" && \
     $ANDROID_HOME/tools/bin/sdkmanager "extras;android;m2repository" "extras;google;m2repository"
 
 # checking versions
-RUN java -version && adb --version && conda --version && allure --version
+RUN java -version && adb --version && conda --version
