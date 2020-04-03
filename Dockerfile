@@ -6,6 +6,10 @@ ARG PATH="/root/miniconda3/bin:${PATH}"
 RUN apt-get update && apt-get install -f --quiet -y python3-pip unzip firefox wget npm nodejs allure \
     openjdk-8-jdk libgconf2-4 libnss3 libxss1 libappindicator1 libindicator7 xdg-utils 
     
+RUN wget https://launchpad.net/~qameta/+archive/ubuntu/allure/+files/allure_2.4.1~xenial_all.deb
+RUN dpkg -i allure_2.4.1~xenial_all.deb
+RUN apt-get install -f
+
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && mkdir /root/.conda \
